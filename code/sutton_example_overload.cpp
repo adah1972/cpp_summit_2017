@@ -10,21 +10,21 @@
 using namespace std;
 
 template <typename R, typename T>
-bool in(R const& range, T const& value)
-    CONCEPT_REQUIRES((Range<R> &&
-                      EqualityComparableWith<T, value_type_t<R>>))
+bool in(R const& rng, T const& value)
+    CONCEPT_REQUIRES((ranges::range<R> &&
+                      equality_comparable_with<T, typename R::value_type>))
 {
-    for (auto const& x : range)
+    for (auto const& x : rng)
         if (x == value)
             return true;
     return false;
 }
 
 template <typename R>
-bool in(R const& range, size_t value)
+bool in(R const& rng, size_t value)
     CONCEPT_REQUIRES((requires (R r) { r.size(); }))
 {
-    if (range.size() == value)
+    if (rng.size() == value)
         return true;
     return false;
 }

@@ -9,17 +9,21 @@ using namespace std;
 
 int main()
 {
-    TEST_CONCEPT(Semiregular, std::unique_ptr<int>);
-    TEST_CONCEPT(EqualityComparable, std::unique_ptr<int>);
-    TEST_CONCEPT(Readable, int);
-    TEST_CONCEPT(Readable, std::unique_ptr<int>);
-    TEST_CONCEPT(Writable, std::unique_ptr<int>, int);
-    TEST_CONCEPT(Semiregular, arma::imat);
-    TEST_CONCEPT(Assignable, arma::imat&, arma::imat&);
-    TEST_CONCEPT(Semiregular, arma::imat22);
-    TEST_CONCEPT(Assignable, arma::imat22&, arma::imat22&);
-    TEST_CONCEPT(Regular, int);
-    TEST_CONCEPT(Regular, char);
+    cout << __cplusplus << endl;
+    cout << __cpp_concepts << endl;
+    TEST_CONCEPT(semiregular, std::unique_ptr<int>);
+    TEST_CONCEPT(equality_comparable, std::unique_ptr<int>);
+    TEST_CONCEPT(readable, int);
+    TEST_CONCEPT(readable, std::unique_ptr<int>);
+    TEST_CONCEPT(writable, std::unique_ptr<int>, int);
+    TEST_CONCEPT(semiregular, arma::imat);
+    TEST_CONCEPT(assignable_from, arma::imat&, arma::imat&);
+    TEST_CONCEPT(semiregular, arma::imat22);
+    TEST_CONCEPT(assignable_from, arma::imat22&, arma::imat22&);
+    TEST_CONCEPT(regular, int);
+    TEST_CONCEPT(regular, char);
+    TEST_CONCEPT(integral, int);
+    TEST_CONCEPT(integral, char);
     TEST_CONCEPT(Integer, int);
     TEST_CONCEPT(Integer, char);
 }

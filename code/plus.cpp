@@ -1,6 +1,7 @@
 #include "concepts.h"
 
-auto plus(Integer x, Integer y)
+template <Integer N>
+auto plus(N x, N y)
 {
     return x + y;
 }

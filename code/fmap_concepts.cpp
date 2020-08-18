@@ -10,7 +10,7 @@
 namespace detail {
 
 template <typename _T1, typename _T2>
-concept bool can_reserve = requires(_T1& dest, const _T2& src) {
+concept can_reserve = requires(_T1& dest, const _T2& src) {
     dest.reserve(src.size());
 };
 
@@ -22,7 +22,8 @@ template <template <typename, typename> class _OutCont = std::vector,
 constexpr auto fmap(_Fn&& f, _Rng&& inputs)
     requires Range<_Rng>
 {
-    typedef std::decay_t<decltype(f(value_type_t<std::decay_t<_Rng>>()))>
+    typedef std::decay_t<decltype(
+        f(std::declval<typename std::decay_t<_Rng>::value_type>()))>
         result_type;
     _OutCont<result_type, _Alloc<result_type>> result;
     if constexpr (detail::can_reserve<decltype(result), _Rng>)

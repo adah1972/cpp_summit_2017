@@ -10,18 +10,18 @@
 using namespace std;
 
 template <typename R, typename T>
-auto in(R const& range, T const& value) -> decltype(*begin(range) == value)
+auto in(R const& rng, T const& value) -> decltype(*begin(rng) == value)
 {
-    for (auto const& x : range)
+    for (auto const& x : rng)
         if (x == value)
             return true;
     return false;
 }
 
 template <typename R>
-auto in(R const& range, size_t value) -> decltype(range.size() == value)
+auto in(R const& rng, size_t value) -> decltype(rng.size() == value)
 {
-    if (range.size() == value)
+    if (rng.size() == value)
         return true;
     return false;
 }
